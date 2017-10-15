@@ -1,0 +1,9 @@
+[package]
+name = "memo"
+version = "1.0.0"
+authors = ["Shashank Kambhampati <frost263@gmail.com>"]
+
+[dependencies]
+serde = "1.0"
+serde_json = "1.0"
+clap = "2"
