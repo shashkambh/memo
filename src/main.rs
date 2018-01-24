@@ -85,21 +85,21 @@ fn main() {
 }
 
 fn read_config() -> Value {
-    let config_file_path = env::home_dir().expect("Home directory not set").join(".memorc");
+    let config_file_path = env::home_dir().expect("Home directory not set").join(".memoconfig");
     let config_file = File::open(config_file_path);
 
     let mut buffer = String::new();
     if let Ok(mut file) = config_file {
-        file.read_to_string(&mut buffer).expect("Could not open ~/.memorc");
+        file.read_to_string(&mut buffer).expect("Could not open ~/.memoconfig");
     } else {
         buffer = "{}".into();
     }
 
-    serde_json::from_str(&buffer).expect("~/.memorc not in JSON format")
+    serde_json::from_str(&buffer).expect("~/.memoconfig not in JSON format")
 }
 
 fn write_config(contents: Value) {
-    let config_file_path = env::home_dir().expect("Home directory not set").join(".memorc");
+    let config_file_path = env::home_dir().expect("Home directory not set").join(".memoconfig");
     let mut config_file = File::create(config_file_path).expect("Did not have write permissions to config file");
 
     config_file.write(contents.to_string().as_bytes()).expect("Did not have write permissions to config file");
